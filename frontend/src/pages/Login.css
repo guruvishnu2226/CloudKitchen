@@ -1,0 +1,205 @@
+/* Login.css - Pure Glassmorphic Theme specifically for the Login Page */
+
+.glass-login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 30%, #ffccbc 60%, #ffcdd2 100%);
+  background-attachment: fixed;
+  position: relative;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Optional overlay to darken the background slightly so glass pops more */
+.glass-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 200, 150, 0.15);
+  z-index: 1;
+}
+
+.glass-login-header {
+  position: absolute;
+  top: 8%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #7b1a1a;
+  text-shadow: 0 2px 8px rgba(255,200,150,0.4);
+  padding: 0 20px;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.glass-login-header h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  letter-spacing: -1px;
+  color: #7b1a1a;
+}
+
+.glass-login-header p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.85;
+  color: #b05a2a;
+}
+
+.glass-login-panel-wrapper {
+  /* width: 100%; */
+  /* max-width: 550px; */
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.glass-login-panel {
+  width: 100%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,240,230,0.85) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255,255,255,0.8);
+  border-left: 1px solid rgba(255,255,255,0.6);
+  border-right: 1px solid rgba(255,255,255,0.6);
+  border-radius: 40px 40px 0 0;
+  padding: 50px 40px 60px 40px;
+  color: #3a1a0a;
+  box-shadow: 0 -10px 40px rgba(200,80,40,0.1);
+  box-sizing: border-box;
+}
+
+.glass-login-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 35px;
+  letter-spacing: -0.5px;
+  color: #7b1a1a;
+}
+
+.glass-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.glass-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.glass-input-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass-input {
+  width: 100%;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(249,115,22,0.25);
+  border-radius: 30px;
+  padding: 18px 20px 18px 55px;
+  color: #3a1a0a;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.glass-input::placeholder {
+  color: #c0785a;
+  font-weight: 400;
+}
+
+.glass-input:focus {
+  background: rgba(255,255,255,0.85);
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249,115,22,0.12);
+}
+
+.glass-submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #f97316, #dc2626);
+  border: none;
+  border-radius: 30px;
+  padding: 18px;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  box-shadow: 0 4px 15px rgba(220,38,38,0.2);
+}
+
+.glass-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(220,38,38,0.3);
+}
+
+.glass-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.glass-login-footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.95rem;
+  color: #7b3a2a;
+  opacity: 1;
+}
+
+.glass-login-link {
+  color: #e05a1a;
+  text-decoration: underline;
+  margin-left: 5px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.glass-login-link:hover { opacity: 0.8; }
+
+.glass-login-error {
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.25);
+  border-radius: 20px;
+  padding: 14px 20px;
+  color: #c0392b;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+/* ── Tablet (600px - 900px) ── */
+@media (max-width: 900px) {
+  .glass-login-header h1 { font-size: 2.8rem; }
+  .glass-login-header p  { font-size: 1rem; }
+  .glass-login-panel { padding: 40px 30px 50px; }
+  .glass-login-panel-wrapper { max-width: 100%; padding: 0 20px; }
+}
+
+/* ── Mobile (< 600px) ── */
+@media (max-width: 600px) {
+  .glass-login-header { top: 10%; }
+  .glass-login-header h1 { font-size: 2.2rem; }
+  .glass-login-header p  { font-size: 0.9rem; }
+  .glass-login-panel { padding: 32px 20px 44px; border-radius: 28px 28px 0 0; }
+  .glass-login-panel-wrapper { padding: 0; }
+  .glass-login-title { font-size: 1.5rem; margin-bottom: 24px; }
+  .glass-input { padding: 15px 16px 15px 48px; font-size: 0.95rem; }
+  .glass-submit-btn { padding: 15px; font-size: 1rem; }
+  .glass-login-footer { font-size: 0.85rem; margin-top: 20px; }
+}

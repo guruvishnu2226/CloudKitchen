@@ -1,0 +1,241 @@
+/* ============================================================
+   GlassTheme.css
+   customer-shell → light yellow-red gradient + transparent glass
+   app-shell      → clean light theme (admin / kitchen)
+   ============================================================ */
+
+/* ── Customer Shell: light yellow to light red gradient ── */
+.customer-shell {
+  background: linear-gradient(135deg,
+    #fff8e1 0%,
+    #ffe0b2 30%,
+    #ffccbc 60%,
+    #ffcdd2 100%
+  ) !important;
+  background-attachment: fixed !important;
+}
+
+body:has(.customer-shell) {
+  background: linear-gradient(135deg,
+    #fff8e1 0%,
+    #ffe0b2 30%,
+    #ffccbc 60%,
+    #ffcdd2 100%
+  ) !important;
+  background-attachment: fixed !important;
+  min-height: 100vh;
+}
+body:has(.customer-shell)::before { display: none !important; }
+
+.customer-shell .main-content,
+.customer-shell .sidebar {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+
+/* ── Sidebar ── */
+.customer-shell .sidebar {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.7) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+}
+.customer-shell .sidebar-logo,
+.customer-shell .sidebar-footer {
+  border-color: rgba(0,0,0,0.08) !important;
+}
+.customer-shell .logo-text h1  { color: #7b1a1a !important; }
+.customer-shell .logo-text span { color: #b05a2a !important; }
+.customer-shell .nav-label      { color: #c0785a !important; }
+.customer-shell .nav-item       { color: #7b3a2a !important; }
+.customer-shell .nav-item:hover {
+  background: rgba(249,115,22,0.1) !important;
+  color: #c0392b !important;
+}
+.customer-shell .nav-item.active {
+  background: rgba(249,115,22,0.15) !important;
+  border-color: rgba(249,115,22,0.4) !important;
+  color: #e05a1a !important;
+}
+.customer-shell .nav-badge { background: #f97316 !important; color: #fff !important; }
+.customer-shell .staff-login-link { color: #7b3a2a !important; }
+.customer-shell .staff-login-link:hover {
+  background: rgba(249,115,22,0.1) !important;
+  color: #c0392b !important;
+}
+
+/* ── Page Header ── */
+.customer-shell .page-header h2 { color: #7b1a1a !important; text-shadow: none !important; }
+.customer-shell .page-header p  { color: #b05a2a !important; }
+
+/* ── Glass Cards ── */
+.customer-shell .glass,
+.customer-shell .menu-stats-row,
+.customer-shell .menu-card,
+.customer-shell .chat-window,
+.customer-shell .chat-input-bar {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  box-shadow: 0 4px 20px rgba(200, 80, 40, 0.08) !important;
+}
+
+/* ── Menu Stats ── */
+.customer-shell .menu-stat-num   { color: #e05a1a !important; text-shadow: none !important; }
+.customer-shell .menu-stat-lbl   { color: #b05a2a !important; }
+.customer-shell .menu-stat-divider { background: rgba(0,0,0,0.1) !important; }
+.customer-shell .menu-cat-name   { color: #7b1a1a !important; }
+.customer-shell .menu-cat-count  {
+  color: #b05a2a !important;
+  background: rgba(249,115,22,0.08) !important;
+  border-color: rgba(249,115,22,0.2) !important;
+}
+
+/* ── Menu Cards ── */
+.customer-shell .menu-card-name  { color: #3a1a0a !important; }
+.customer-shell .menu-card-price { color: #c0392b !important; font-weight: 800 !important; }
+.customer-shell .menu-card-cta   { color: #c0785a !important; }
+.customer-shell .menu-card:hover {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(249,115,22,0.5) !important;
+  transform: translateY(-6px) scale(1.03) !important;
+}
+.customer-shell .menu-card:hover .menu-card-cta { color: #f97316 !important; }
+.customer-shell .menu-card::before { display: none !important; }
+
+/* ── Inputs ── */
+.customer-shell .form-input,
+.customer-shell .form-select,
+.customer-shell .chat-input {
+  background: rgba(255,255,255,0.6) !important;
+  border: 1px solid rgba(249,115,22,0.25) !important;
+  border-radius: 10px !important;
+  color: #3a1a0a !important;
+  padding: 12px 15px !important;
+}
+.customer-shell .form-input::placeholder,
+.customer-shell .chat-input::placeholder { color: #c0785a !important; }
+.customer-shell .form-input:focus,
+.customer-shell .form-select:focus,
+.customer-shell .chat-input:focus {
+  background: rgba(255,255,255,0.85) !important;
+  border-color: #f97316 !important;
+  box-shadow: 0 0 0 3px rgba(249,115,22,0.12) !important;
+}
+.customer-shell .form-select option { background: #fff !important; color: #3a1a0a !important; }
+.customer-shell .form-label    { color: #7b3a2a !important; }
+.customer-shell .distance-unit { color: #b05a2a !important; }
+
+/* ── Buttons ── */
+.customer-shell .submit-btn,
+.customer-shell .chat-send-btn {
+  background: linear-gradient(135deg, #f97316, #dc2626) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 15px rgba(220,38,38,0.2) !important;
+}
+.customer-shell .submit-btn:hover,
+.customer-shell .chat-send-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(220,38,38,0.3) !important;
+}
+.customer-shell .order-type-btn {
+  background: rgba(255,255,255,0.5) !important;
+  border: 1px solid rgba(249,115,22,0.25) !important;
+  color: #7b3a2a !important;
+  border-radius: 10px !important;
+}
+.customer-shell .order-type-btn:hover {
+  background: rgba(255,255,255,0.75) !important;
+  color: #c0392b !important;
+}
+.customer-shell .order-type-btn.selected {
+  background: rgba(249,115,22,0.12) !important;
+  border-color: rgba(249,115,22,0.5) !important;
+  color: #e05a1a !important;
+  font-weight: 700 !important;
+}
+.customer-shell .back-btn {
+  background: rgba(255,255,255,0.5) !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  color: #7b3a2a !important;
+}
+.customer-shell .back-btn:hover { background: rgba(255,255,255,0.75) !important; }
+
+/* ── Text ── */
+.customer-shell .preview-title   { color: #b05a2a !important; }
+.customer-shell .preview-row     { color: #7b3a2a !important; }
+.customer-shell .preview-row .val { color: #3a1a0a !important; }
+.customer-shell .preview-divider  { background: rgba(0,0,0,0.08) !important; }
+.customer-shell .preview-type-badge {
+  background: rgba(249,115,22,0.1) !important;
+  border-color: rgba(249,115,22,0.3) !important;
+  color: #e05a1a !important;
+}
+.customer-shell .preview-empty { color: #c0785a !important; }
+
+/* ── Receipt ── */
+.customer-shell .receipt-header h2 { color: #3a1a0a !important; }
+.customer-shell .receipt-header p  { color: #7b3a2a !important; }
+.customer-shell .rr-label { color: #7b3a2a !important; }
+.customer-shell .rr-val   { color: #3a1a0a !important; }
+.customer-shell .rr-val.price { color: #c0392b !important; }
+.customer-shell .receipt-row { border-color: rgba(0,0,0,0.07) !important; }
+
+/* ── Chat ── */
+.customer-shell .chat-window { border-bottom: none !important; }
+.customer-shell .chat-empty h3 { color: #b05a2a !important; }
+.customer-shell .chat-empty p  { color: #c0785a !important; }
+.customer-shell .msg-meta      { color: #c0785a !important; }
+.customer-shell .chat-msg.ai .bubble {
+  background: rgba(255,255,255,0.7) !important;
+  border-color: rgba(249,115,22,0.2) !important;
+  color: #3a1a0a !important;
+}
+.customer-shell .typing-dot { background: #c0785a !important; }
+.customer-shell .suggestion-chip {
+  background: rgba(249,115,22,0.08) !important;
+  border-color: rgba(249,115,22,0.25) !important;
+  color: #e05a1a !important;
+}
+
+/* ── Error banner ── */
+.customer-shell .error-banner {
+  background: rgba(239,68,68,0.08) !important;
+  border-color: rgba(239,68,68,0.25) !important;
+  color: #c0392b !important;
+}
+
+/* ── Mobile nav ── */
+.customer-shell .mobile-nav {
+  background: rgba(255,255,255,0.75) !important;
+  backdrop-filter: blur(20px) !important;
+  border-top: 1px solid rgba(249,115,22,0.2) !important;
+}
+.customer-shell .mobile-nav-item       { color: #b05a2a !important; }
+.customer-shell .mobile-nav-item.active { color: #e05a1a !important; }
+
+/* ── Skeletons ── */
+.customer-shell .menu-skel {
+  background: linear-gradient(90deg,
+    rgba(255,200,150,0.4) 25%,
+    rgba(255,220,180,0.6) 50%,
+    rgba(255,200,150,0.4) 75%
+  ) !important;
+}
+
+/* ============================================================
+   ADMIN / KITCHEN — app-shell stays clean light
+   ============================================================ */
+body:has(.app-shell) {
+  background: #e6e6e6 !important;
+  background-image: none !important;
+}
+body:has(.app-shell)::before { display: none !important; }

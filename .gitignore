@@ -1,0 +1,34 @@
+# ── Environment variables ──
+.env
+*.env
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+.venv/
+
+# ── AI Models (large binary files) ──
+*.keras
+*.h5
+*.pth
+
+# ── Node / Frontend ──
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# ── Temp / Audio ──
+temp_recording.wav
+*.wav
+
+# ── OS files ──
+.DS_Store
+Thumbs.db
+
+# ── IDE ──
+.vscode/
+.idea/
