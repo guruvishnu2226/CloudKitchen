@@ -21,6 +21,12 @@ dist/
 dist-ssr/
 *.local
 
+# ── API folder node_modules ──
+api/node_modules/
+api/package.json
+api/package-lock.json
+backend/node_modules/
+
 # ── Temp / Audio ──
 temp_recording.wav
 *.wav
