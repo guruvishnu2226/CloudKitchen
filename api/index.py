@@ -6,13 +6,13 @@ from .routes.auth import auth_bp
 
 app = Flask(__name__)
 
-# Register all your blueprints
-app.register_blueprint(customer_bp, url_prefix='/api')
-app.register_blueprint(kitchen_bp, url_prefix='/api/kitchen')
-app.register_blueprint(admin_bp, url_prefix='/api/admin')
-app.register_blueprint(auth_bp, url_prefix='/api/auth')
+# Change the prefix to '/' so it matches what Vercel sends
+app.register_blueprint(customer_bp, url_prefix='/')
+app.register_blueprint(kitchen_bp, url_prefix='/kitchen')
+app.register_blueprint(admin_bp, url_prefix='/admin')
+app.register_blueprint(auth_bp, url_prefix='/auth')
 
-@app.route('/')
+@app.route('/api/')
 def home():
     return {"message": "BiteCraft API is running"}
 
