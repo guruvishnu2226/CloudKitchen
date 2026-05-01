@@ -1,7 +1,11 @@
 flask
 flask-cors
+flask-jwt-extended
 mysql-connector-python
 tensorflow
 numpy
-ollama
+google-generativeai
 openai-whisper
+python-dotenv
+werkzeug
+difflib
