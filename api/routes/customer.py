@@ -4,17 +4,30 @@ import re
 import os
 import difflib
 import logging
-import numpy as np
-import ollama
 import json
 
-
-# Import database and AI models 
 from models.db import get_db_connection
 from ml.delivery_model import delivery_ai
 from ml.voice_model import voice_ai
 
-# Initialize the Blueprint
+# ── OpenRouter setup (once at startup) ──
+try:
+    from openai import OpenAI
+    openrouter_client = OpenAI(
+        base_url="https://openrouter.ai/api/v1",
+        api_key=os.getenv("OPENROUTER_API_KEY"),
+    )
+    print("✅ OpenRouter AI configured successfully")
+except Exception as e:
+    openrouter_client = None
+    print(f"⚠️ OpenRouter not available: {e}")
+
+# ── numpy (only if delivery_ai loaded) ──
+try:
+    import numpy as np
+except ImportError:
+    np = None
+
 customer_bp = Blueprint('customer', __name__)
 
 # CUSTOMER ROUTES
@@ -78,11 +91,13 @@ def ask_waiter():
         db_conn.close()
         
     try:            
+        if not openrouter_client:
+            return jsonify({"error": "AI assistant is offline"}), 500
+
         SYSTEM_PROMPT = (
-           "### INSTRUCTIONS\n"
-            "You are a Kitchen Kiosk. Be brief. Use ONLY the data provided.\n\n"
+            "You are a Kitchen Kiosk AI Waiter. Be brief. Use ONLY the data provided.\n\n"
             "### DATA\n"
-            f"MENU: {organized_menu}\n"
+            f"MENU:\n{organized_menu}\n"
             f"PREDICTION: {ai_delivery_hint if ai_delivery_hint else '15 mins (Takeaway)'}\n\n"
             "### RESPONSE FORMAT (STRICT)\n"
             "1. List items + prices.\n"
@@ -90,21 +105,21 @@ def ask_waiter():
             "3. Time: Use the exact number from PREDICTION.\n"
             "4. DO NOT write paragraphs. NO yapping about policies."
         )
-        print(f"---DEBUGGING AI INPUT---")
-        print(f"keras hint being sent: {ai_delivery_hint}")
-        
-        response = ollama.chat(
-            model='phi3:mini',
+
+        response = openrouter_client.chat.completions.create(
+            model="openai/gpt-oss-120b",
             messages=[
-                {'role': 'system', 'content': SYSTEM_PROMPT},
-                {'role': 'user', 'content': user_query},
-            ])
-        
-        return jsonify({"reply": response['message']['content']})
-    
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user",   "content": user_query}
+            ]
+        )
+
+        return jsonify({"reply": response.choices[0].message.content})
+
     except Exception as e:
-        logging.error(f"AI waiter Error: {e}")
-        return jsonify({"error": "AI assistant is offline"}), 500
+        logging.error(f"OpenRouter AI waiter error: {e}")
+        print(f"OpenRouter error details: {e}")
+        return jsonify({"error": f"AI assistant error: {str(e)}"}), 500
 
 @customer_bp.route("/api/voice_order", methods=["POST"])
 def process_voice():
