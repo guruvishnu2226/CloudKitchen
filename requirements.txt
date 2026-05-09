@@ -2,9 +2,9 @@ Flask
 Flask-CORS
 Flask-JWT-Extended
 mysql-connector-python
-google-generativeai
 tensorflow
 openai
 werkzeug
 python-dotenv
 gunicorn
+openai-whisper
