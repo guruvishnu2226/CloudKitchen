@@ -1,8 +1,10 @@
-flask
-flask-cors
-flask-jwt-extended
+Flask
+Flask-CORS
+Flask-JWT-Extended
 mysql-connector-python
 google-generativeai
-python-dotenv
+tensorflow
+openai
 werkzeug
-numpy
+python-dotenv
+gunicorn
