@@ -12,6 +12,7 @@ env/
 
 # ── AI Models (large binary files) ──
 *.keras
+!api/delivery_brain.keras
 *.h5
 *.pth
 
