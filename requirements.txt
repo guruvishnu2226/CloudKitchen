@@ -2,7 +2,6 @@ Flask
 Flask-CORS
 Flask-JWT-Extended
 mysql-connector-python
-openai-whisper
 openai
 werkzeug
 python-dotenv

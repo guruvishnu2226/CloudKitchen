@@ -1,13 +1,26 @@
-import whisper
+import os
+from openai import OpenAI
 
-def load_voice_ai():
+# Initialize the lightweight API client
+# (It automatically uses the OPENAI_API_KEY from your environment variables)
+client = OpenAI()
+
+def transcribe_audio(audio_file_path):
     try:
-        model = whisper.load_model("base")
-        print("✅ Voice AI Loaded Successfully")
-        return model
+        if not os.path.exists(audio_file_path):
+            print("❌ Audio file not found")
+            return ""
+            
+        with open(audio_file_path, "rb") as audio_file:
+            print("🎙️ Sending audio to OpenAI Cloud Whisper...")
+            transcript = client.audio.transcriptions.create(
+                model="whisper-1", 
+                file=audio_file
+            )
+        return transcript.text
     except Exception as e:
-        print(f"❌ Could not load Voice AI: {e}")
-        return None
+        print(f"❌ Cloud Transcription error: {e}")
+        return ""
 
-# THIS is the exact variable your customer.py file is trying to import!
-voice_ai = load_voice_ai()
+# Dummy object placeholder so your other files don't break if they import it
+voice_ai = None
